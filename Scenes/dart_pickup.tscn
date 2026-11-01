@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dvnjvulj3is7l"]
+
+[ext_resource type="Script" uid="uid://d0rhh5oilo207" path="res://Scripts/dart_pickup.gd" id="1_x43hi"]
+[ext_resource type="Texture2D" uid="uid://cv4v03kyf3gk" path="res://Art/dartgun.png" id="2_x43hi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hm56a"]
+size = Vector2(32, 32)
+
+[node name="DartPickup" type="Area2D" unique_id=584922557]
+collision_layer = 0
+script = ExtResource("1_x43hi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1810170506]
+shape = SubResource("RectangleShape2D_hm56a")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1216885065]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_x43hi")
+
+[node name="Prompt" type="Label" parent="." unique_id=519225571]
+offset_left = -33.0
+offset_top = -38.0
+offset_right = 41.0
+offset_bottom = -15.0
+text = "E: Pick up"

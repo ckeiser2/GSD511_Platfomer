@@ -12,6 +12,11 @@ var is_double_Jumping := true
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
+@onready var weapon: DartWeapon = $Weapon
+
+func equip_weapon() -> bool:
+	return weapon.equip()
+
 func _physics_process(delta):
 	if !is_on_floor():
 		velocity += get_gravity() * delta
@@ -41,6 +46,14 @@ func _physics_process(delta):
 	if isMoving:
 		is_facing_left = direction < 0.0
 		sprite_2d.flip_h = is_facing_left
+		
+	weapon.update_facing(is_facing_left)
+		
+	if Input.is_action_just_pressed("reload"):
+		weapon.reload()
+		
+	if Input.is_action_just_pressed("shoot"):
+		weapon.fire(is_facing_left, self)
 		
 	if is_on_floor():
 		if isMoving:

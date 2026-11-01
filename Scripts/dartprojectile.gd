@@ -21,21 +21,49 @@ func setup(facing_left: bool, firing_player:Node2D) -> void:
 	
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-
-func _on_body_entered(body):
-	if body == shooter or hit_processed:
-		return 
+	area_entered.connect(_on_area_entered)
 	
-	hit_processed = true
-	print("Dart hit: ", body.name)
-	queue_free()
-
-func _phsyics_process(delta: float) -> void:
+func _on_area_entered(area: Area2D) -> void:
 	if hit_processed:
 		return
+	
+	if not area.has_method("receive_candy"):
+		return
+	
+	hit_processed = true
+	area.call("receive_candy")
+	queue_free()
+
+func _physics_process(delta: float) -> void:
+	if hit_processed:
+		return
+		
 	time_alive += delta
 	
 	if time_alive >= lifetime:
 		queue_free()
 		return
+		
 	position += direction * speed * delta
+
+func _on_body_entered(body: Node2D) -> void:
+	if body == shooter or hit_processed:
+		return 
+		
+	hit_processed = true
+	
+	if body.has_method("create_dart_step"):
+		body.call_deferred(
+			"create_dart_step",
+			global_position,
+			direction
+		)
+	elif body.has_method("stun"):
+		body.call("stun")
+	
+	if body.has_method("stun"):
+		body.call("stun")
+	
+	hit_processed = true
+	print("Dart hit: ", body.name)
+	queue_free()

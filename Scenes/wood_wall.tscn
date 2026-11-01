@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c2wsnvhnly4fw"]
+
+[ext_resource type="Script" uid="uid://byr6lih1v2bjc" path="res://Scripts/wood_wall.gd" id="1_d45q0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yt1ol"]
+size = Vector2(32, 160)
+
+[node name="WoodWall" type="StaticBody2D" unique_id=279813574]
+script = ExtResource("1_d45q0")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=436670746]
+color = Color(0.29606345, 0.1778062, 0.06562747, 1)
+polygon = PackedVector2Array(-16, -160, 16, -160, 16, 0, -16, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240677386]
+position = Vector2(0, -80)
+shape = SubResource("RectangleShape2D_yt1ol")

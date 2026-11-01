@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dr2dtx7m6t0sf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6hqh"]
+size = Vector2(24, 6)
+
+[node name="DartStep" type="StaticBody2D" unique_id=604646726]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Visual" type="Polygon2D" parent="." unique_id=1987474181]
+color = Color(0.27022192, 0.27022192, 0.2702219, 1)
+polygon = PackedVector2Array(-12, -3, 12, -3, 12, 3, -12, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1290893414]
+shape = SubResource("RectangleShape2D_b6hqh")
+one_way_collision = true
