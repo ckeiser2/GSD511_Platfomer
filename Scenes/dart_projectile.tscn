@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cpicjmmtxbl7n"]
+
+[ext_resource type="Script" uid="uid://bi83jwrblr8cx" path="res://Scripts/dartprojectile.gd" id="1_xl4j1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxd68"]
+size = Vector2(8, 6)
+
+[node name="DartProjectile" type="Area2D" unique_id=2024180077]
+collision_layer = 0
+script = ExtResource("1_xl4j1")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1586277374]
+color = Color(0.16496003, 0.15629092, 0.110091515, 1)
+polygon = PackedVector2Array(4, 0, -4, -3, -4, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2136207777]
+shape = SubResource("RectangleShape2D_rxd68")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://dfnfj7esyy3qc"]
+
+[ext_resource type="Script" uid="uid://cod4ehxkf5rmn" path="res://Scripts/main_menu.gd" id="1_28flt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p08fh"]
+bg_color = Color(0.44599944, 0.57185966, 0.9802212, 1)
+border_width_left = 2
+border_width_top = 2
+border_color = Color(0.72990257, 0.7923104, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kyu6"]
+bg_color = Color(0.4305025, 0.5829256, 0.95647055, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4x3fk"]
+bg_color = Color(0.08008138, 0.2553752, 0.36062706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nstmv"]
+bg_color = Color(0.47396803, 0.566492, 0.9693083, 1)
+
+[sub_resource type="Theme" id="Theme_28flt"]
+Button/colors/font_pressed_color = Color(0.9676589, 0.9560882, 0.9565546, 1)
+Button/font_sizes/font_size = 20
+Button/styles/focus = SubResource("StyleBoxFlat_p08fh")
+Button/styles/hover = SubResource("StyleBoxFlat_0kyu6")
+Button/styles/normal = SubResource("StyleBoxFlat_4x3fk")
+Button/styles/pressed = SubResource("StyleBoxFlat_nstmv")
+
+[node name="MainMenu" type="Control" unique_id=897413333]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_28flt")
+script = ExtResource("1_28flt")
+
+[node name="Background" type="ColorRect" parent="." unique_id=257993915]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3133042, 0.3491902, 0.4353445, 1)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=454542541]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBox" type="VBoxContainer" parent="Center" unique_id=865467690]
+layout_mode = 2
+theme = SubResource("Theme_28flt")
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Center/MenuBox" unique_id=1077775777]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Platformer"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Center/MenuBox" unique_id=825677753]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="Center/MenuBox" unique_id=968260734]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="Center/MenuBox/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Center/MenuBox/QuitButton" to="." method="_on_quit_button_pressed"]
